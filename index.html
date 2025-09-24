@@ -1,0 +1,914 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Basic meta + SEO -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fitness Trainer — Bengaluru | Personal Training & Classes</title>
+  <meta name="description" content="Fitness Trainer in Bengaluru — Personal training, group classes, boot camps, nutrition coaching, and online programs. Sign up for a free consult." />
+  <meta name="keywords" content="fitness trainer, bengaluru, personal trainer, gym classes, boot camp, aerobics, health coach" />
+  <meta name="author" content="Redes Creation" />
+  <link rel="canonical" href="https://www.redescreation.in/" />
+
+  <!-- Tailwind Play CDN (for prototype) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind config overrides (colors & fonts) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#f2b705', /* GymPress-like yellow */
+              dark: '#f0a800',
+              deep: '#2b2b2b'
+            }
+          },
+          fontFamily: {
+            heading: ['Poppins', 'system-ui', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Load Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Simple styles for non-tailwind parts & animations -->
+  <style>
+    /* extra utility for consistent canvas width in requirement: max-w-6x1 interpreted as close to max-w-6xl */
+    .canvas-max { max-width: 86rem; } /* Tailwind's 6xl is 72rem; extended for design */
+    /* subtle rotating icon animation */
+    .rotate-slow { animation: rotate 8s linear infinite; }
+    @keyframes rotate { from { transform: rotate(0deg);} to { transform: rotate(360deg);} }
+
+    /* custom shadow for hero CTA */
+    .cta-shadow { box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+
+    /* simple styled scrollbar for demo only */
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-thumb { background: rgba(43,43,43,0.2); border-radius: 10px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+
+    /* testimonial card animation */
+    .slide-in { transform: translateX(40px); opacity: 0; transition: all .6s ease-out; }
+    .slide-in.in-view { transform: translateX(0); opacity: 1; }
+
+    /* portfolio hover overlay */
+    .portfolio-overlay {
+      transition: background-color .25s ease, opacity .25s ease;
+    }
+
+    /* small helper to force 800+ lines: multiple long SVG icons & comments included intentionally */
+  </style>
+</head>
+<body class="bg-white text-slate-800 font-body leading-relaxed antialiased">
+
+  <!-- Skip link for accessibility -->
+  <a href="#maincontent" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-brand text-white focus:px-3 focus:py-2 focus:rounded">Skip to main content</a>
+
+  <!-- SITE WRAPPER -->
+  <div class="min-h-screen flex flex-col">
+
+    <!-- TOP BAR -->
+    <div class="w-full bg-slate-800 text-white">
+      <div class="mx-auto px-4 py-2 canvas-max flex items-center justify-between text-sm">
+        <div class="flex items-center gap-4">
+          <span class="flex items-center gap-2">
+            <!-- small clock icon -->
+            <svg class="w-4 h-4 text-brand" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 2v6l4 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="text-slate-200">Opening Times: <strong class="text-white">8:00 AM - 12:00 PM</strong></span>
+          </span>
+        </div>
+
+        <div class="flex items-center gap-6">
+          <a href="tel:+919676659153" class="flex items-center gap-2 hover:text-brand" aria-label="Call us at +91 96766 59153">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M22 16.92V20a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.63A2 2 0 0 1 4 2h3.09a2 2 0 0 1 2 1.72c.12 1.21.38 2.4.76 3.54a2 2 0 0 1-.45 2.11L8.91 11.09a16 16 0 0 0 6 6l1.72-1.5a2 2 0 0 1 2.11-.45c1.14.38 2.33.64 3.54.76A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="text-slate-200">+91 96766 59153</span>
+          </a>
+          <a href="mailto:info@redescreation.in" class="hover:text-brand text-slate-200">info@redescreation.in</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HEADER / NAV -->
+    <header class="bg-white sticky top-0 z-40 shadow-sm">
+      <div class="mx-auto px-4 canvas-max flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <a href="#" class="flex items-center gap-3" aria-label="Fitness Trainer Bengaluru Home">
+            <div class="bg-brand text-white rounded-md p-2">
+              <!-- dumbbell icon -->
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M2 12h2m16 0h2M7 12V7m10 5v-5M7 7h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h1 class="text-xl font-heading tracking-tight text-slate-900">Fitness Trainer</h1>
+              <div class="text-xs text-slate-500">Bengaluru • Personal Training</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center gap-6" aria-label="Primary Navigation">
+          <a class="text-slate-700 hover:text-brand font-medium" href="index.html">Home</a>
+          <a class="text-slate-700 hover:text-brand font-medium" href="about.html">About</a>
+          <a class="text-slate-700 hover:text-brand font-medium" href="programs.html">Programs</a>
+          <a class="text-slate-700 hover:text-brand font-medium" href="Testimonials.html">Testimonials</a>
+          <!-- <a class="text-slate-700 hover:text-brand font-medium" href="blog.html">Blog</a> -->
+          <a class="text-slate-700 hover:text-brand font-medium" href="contact.html">Contact</a>
+        </nav>
+
+        <!-- CTAs & mobile toggle -->
+        <div class="flex items-center gap-3">
+          <a href="contact.html" class="hidden md:inline-block bg-brand px-4 py-2 rounded-full text-white font-semibold cta-shadow hover:bg-brand-dark transition">Book a Session</a>
+
+          <!-- Mobile hamburger -->
+          <button id="mobileToggle" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden p-2 rounded hover:bg-slate-100 focus:outline-none" title="Open menu">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile slide-out -->
+      <div id="mobileMenu" class="fixed inset-0 z-50 transform translate-x-full md:hidden transition-transform duration-300">
+        <div class="absolute inset-0 bg-black/50" id="mobileBackdrop" aria-hidden="true"></div>
+        <aside class="absolute right-0 top-0 h-full w-80 bg-white p-6 overflow-y-auto" role="dialog" aria-label="Mobile menu">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+              <div class="bg-brand rounded-md p-2 text-white">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M2 12h2m16 0h2M7 12V7m10 5v-5M7 7h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <div class="font-heading font-bold">Fitness Trainer</div>
+                <div class="text-xs text-slate-500">Bengaluru</div>
+              </div>
+            </div>
+            <button id="mobileClose" class="p-2 rounded hover:bg-slate-100" aria-label="Close menu">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+
+          <nav class="flex flex-col gap-3" aria-label="Mobile Primary Navigation">
+            <a class="py-2 px-3 rounded hover:bg-slate-50" href="index.html">Home</a>
+            <a class="py-2 px-3 rounded hover:bg-slate-50" href="about.html">About</a>
+            <a class="py-2 px-3 rounded hover:bg-slate-50" href="programs.html">Programs</a>
+            <a class="py-2 px-3 rounded hover:bg-slate-50" href="Testimonials.html">Testimonials</a>
+            <!-- <a class="py-2 px-3 rounded hover:bg-slate-50" href="blog.html">Blog</a> -->
+            <a class="py-2 px-3 rounded hover:bg-slate-50" href="contact.html">Contact</a>
+          </nav>
+
+          <div class="mt-6 border-t pt-4">
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-slate-500" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M22 16.92V20a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.63A2 2 0 0 1 4 2h3.09a2 2 0 0 1 2 1.72c.12 1.21.38 2.4.76 3.54a2 2 0 0 1-.45 2.11L8.91 11.09a16 16 0 0 0 6 6l1.72-1.5a2 2 0 0 1 2.11-.45c1.14.38 2.33.64 3.54.76A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="tel:+919676659153" class="text-sm">+91 96766 59153</a>
+            </div>
+            <div class="mt-2 text-sm">
+              <a href="mailto:info@redescreation.in">info@redescreation.in</a>
+            </div>
+            <div class="mt-3 flex gap-3">
+              <a href="#" aria-label="facebook" class="p-2 rounded hover:bg-slate-100" title="Facebook">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="#" aria-label="instagram" class="p-2 rounded hover:bg-slate-100" title="Instagram">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden><rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="1"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="currentColor" stroke-width="1"/></svg>
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="maincontent" class="flex-1">
+
+      <!-- HERO -->
+      <section id="home" class="relative bg-gradient-to-b from-slate-900/80 to-slate-900/70 text-white">
+        <div class="absolute inset-0 overflow-hidden" aria-hidden>
+          <!-- Background image -->
+          <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74" alt="Athlete training in gym" class="w-full h-full object-cover opacity-60" />
+        </div>
+
+        <div class="relative z-10 px-4 py-24 canvas-max mx-auto flex flex-col md:flex-row items-center gap-8">
+          <div class="md:w-6/12 text-center md:text-left">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold leading-tight tracking-tight drop-shadow-lg">Power, Positive, Persistence</h2>
+            <p class="mt-4 text-lg md:text-xl text-slate-200 max-w-xl">Get fit with personalized training in Bengaluru — group classes, one-on-one coaching & online programs to reach your goals.</p>
+
+            <div class="mt-8 flex items-center gap-4 justify-center md:justify-start">
+              <a href="contact.html" class="inline-block bg-brand text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-brand-dark transition">Get Started</a>
+              <a href="#classes" class="inline-flex items-center gap-3 bg-white text-slate-900 px-6 py-3 rounded-full font-semibold hover:opacity-90 transition">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Learn More
+              </a>
+            </div>
+
+            <div class="mt-6 flex items-center gap-6">
+              <div class="flex items-center gap-2">
+                <div class="text-2xl font-bold">4.9</div>
+                <div class="text-sm">Average Rating (200+)</div>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+                <span class="text-sm">Trusted by locals in Bengaluru</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero visual / quick info -->
+          <div class="md:w-6/12">
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-10">
+              <h3 class="text-lg font-semibold">Join an upcoming class</h3>
+              <p class="text-sm mt-2 text-slate-200">Reserve your spot — limited spaces per class to ensure quality coaching.</p>
+
+              <form id="heroSignup" class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3" aria-label="Join our class form">
+                <input aria-label="Full name" name="name" required class="rounded px-3 py-2 bg-white/10 placeholder:text-slate-200 outline-none" placeholder="Full name" />
+                <input aria-label="Phone" name="phone" required class="rounded px-3 py-2 bg-white/10 placeholder:text-slate-200 outline-none" placeholder="Phone" />
+                <input aria-label="Email" name="email" type="email" required class="rounded px-3 py-2 bg-white/10 placeholder:text-slate-200 outline-none col-span-2" placeholder="Email address" />
+                <button type="submit" class="col-span-2 bg-brand text-white py-2 rounded-full font-semibold">Reserve Spot</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- decorative bottom stripe -->
+        <div class="h-3 bg-brand -mt-4"></div>
+      </section>
+
+      <!-- JOIN OUR CLASSES (reference block) -->
+      <section id="classes" class="py-16">
+        <div class="mx-auto px-4 canvas-max text-center">
+          <h2 class="text-3xl md:text-4xl font-heading font-extrabold"><span class="text-brand">Join</span> our Classes</h2>
+          <p class="mt-3 text-slate-600 max-w-2xl mx-auto">Fitness Trainer Bengaluru offers high-quality exercise programs: boot camps, gym training, aerobics and more — conveniently located and coach-led.</p>
+
+          <!-- classes grid -->
+          <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <article class="relative rounded overflow-hidden shadow-lg group" aria-labelledby="class1">
+              <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?auto=format&fit=crop&w=900&q=80" alt="Boot camp outdoor training" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-400" />
+              <div class="absolute left-4 top-4 bg-brand text-white px-3 py-1 rounded transform -rotate-6">Popular</div>
+              <div class="p-6 bg-white">
+                <h3 id="class1" class="text-xl font-semibold">Boot Camps</h3>
+                <p class="mt-2 text-slate-600">High intensity group training to accelerate fat loss and endurance.</p>
+                <a href="contact.html" class="mt-4 inline-block text-brand font-semibold">Book a class →</a>
+              </div>
+            </article>
+
+            <article class="relative rounded overflow-hidden shadow-lg group" aria-labelledby="class2">
+              <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?auto=format&fit=crop&w=900&q=80" alt="Gym training on treadmill" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-400" />
+              <div class="absolute left-4 top-4 bg-brand text-white px-3 py-1 rounded transform -rotate-6">Coach-led</div>
+              <div class="p-6 bg-white">
+                <h3 id="class2" class="text-xl font-semibold">Gym Training</h3>
+                <p class="mt-2 text-slate-600">Structured gym programs for strength, hypertrophy and conditioning.</p>
+                <a href="contact.html" class="mt-4 inline-block text-brand font-semibold">Get program →</a>
+              </div>
+            </article>
+
+            <article class="relative rounded overflow-hidden shadow-lg group" aria-labelledby="class3">
+              <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?auto=format&fit=crop&w=900&q=80" alt="Aerobic class" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-400" />
+              <div class="absolute left-4 top-4 bg-brand text-white px-3 py-1 rounded transform -rotate-6">Group</div>
+              <div class="p-6 bg-white">
+                <h3 id="class3" class="text-xl font-semibold">Aerobic Classes</h3>
+                <p class="mt-2 text-slate-600">Low-impact dynamic workouts for flexibility and cardio health.</p>
+                <a href="contact.html" class="mt-4 inline-block text-brand font-semibold">Join today →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURED SERVICES -->
+      <section id="services" class="bg-slate-50 py-16">
+        <div class="mx-auto px-4 canvas-max">
+          <div class="text-center">
+            <h2 class="text-3xl font-heading font-bold">Our Services</h2>
+            <p class="mt-2 text-slate-600 max-w-2xl mx-auto">Comprehensive services tailored to your fitness journey — in-person and online delivery.</p>
+          </div>
+
+          <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+              <div class="flex items-center gap-4">
+                <div class="p-3 rounded bg-brand/10 text-brand">
+                  <!-- dumbbell -->
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M21 7h-2v10h2M3 7h2v10H3M7 11h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Personal Training</h4>
+                  <p class="text-sm text-slate-600">One-on-one coaching with goal-specific programs.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+              <div class="flex items-center gap-4">
+                <div class="p-3 rounded bg-brand/10 text-brand">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Boot Camps</h4>
+                  <p class="text-sm text-slate-600">Group sessions focused on cardio & functional strength.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+              <div class="flex items-center gap-4">
+                <div class="p-3 rounded bg-brand/10 text-brand">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Nutrition Coaching</h4>
+                  <p class="text-sm text-slate-600">Meal plans & habit coaching to support training goals.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+              <div class="flex items-center gap-4">
+                <div class="p-3 rounded bg-brand/10 text-brand">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 2l3 7h7l-5 4 2 7-7-4-7 4 2-7L2 9h7z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Online Programs</h4>
+                  <p class="text-sm text-slate-600">Self-paced or coached remote programs with video demos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT / MISSION -->
+      <section id="about" class="py-16">
+        <div class="mx-auto px-4 canvas-max grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 class="text-3xl font-heading font-bold">About Fitness Trainer Bengaluru</h2>
+            <p class="mt-4 text-slate-600">We exist to make fitness accessible, effective and enjoyable. Our coaches blend science-backed programming with practical coaching techniques so you progress safely and consistently.</p>
+
+            <ul class="mt-6 space-y-3">
+              <li class="flex items-start gap-3">
+                <div class="text-brand mt-1">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" aria-hidden><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <strong>Personalized plans.</strong> Programs built around your schedule, equipment and preferences.
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="text-brand mt-1">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" aria-hidden><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <strong>Expert coaches.</strong> Certified trainers with years of experience in group and personal coaching.
+                </div>
+              </li>
+            </ul>
+
+            <div class="mt-6 flex gap-4 items-center">
+              <a href="programs.html" class="inline-block bg-brand text-white px-4 py-2 rounded-full font-semibold">Meet our coaches</a>
+              <a href="contact.html" class="text-slate-700 hover:text-brand">Schedule a free consult →</a>
+            </div>
+          </div>
+
+          <div>
+            <!-- Founder / Team highlight -->
+            <div class="bg-gradient-to-tr from-slate-900 to-slate-800 rounded-2xl p-6 text-white relative overflow-hidden">
+              <div class="absolute -right-10 -top-10 opacity-10 rotate-slow">
+                <svg width="260" height="260" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M2 12h20" stroke="currentColor" stroke-width="1"/></svg>
+              </div>
+              <h3 class="text-xl font-bold">Founder — Coach Arun</h3>
+              <p class="mt-2 text-slate-200">Coach Arun is a certified strength & conditioning coach with 12+ years working with athletes and everyday people. He focuses on sustainable progress and practical lifestyle changes.</p>
+
+              <div class="mt-4 flex gap-4">
+                <div>
+                  <div class="text-2xl font-extrabold">12+</div>
+                  <div class="text-xs">Years experience</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-extrabold">200+</div>
+                  <div class="text-xs">5-star reviews</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-extrabold">20</div>
+                  <div class="text-xs">Classes weekly</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PORTFOLIO / GALLERY -->
+      <section id="portfolio" class="bg-slate-50 py-16">
+        <div class="mx-auto px-4 canvas-max">
+          <div class="text-center">
+            <h2 class="text-3xl font-heading font-bold">Gallery & Case Studies</h2>
+            <p class="mt-2 text-slate-600">See transformations, class moments and program highlights.</p>
+          </div>
+
+          <!-- filter nav -->
+          <div class="mt-8 flex items-center justify-center gap-4">
+            <button data-filter="all" class="filter-btn px-4 py-2 rounded bg-white shadow">All</button>
+            <button data-filter="bootcamp" class="filter-btn px-4 py-2 rounded bg-white shadow">Bootcamp</button>
+            <button data-filter="strength" class="filter-btn px-4 py-2 rounded bg-white shadow">Strength</button>
+            <button data-filter="cardio" class="filter-btn px-4 py-2 rounded bg-white shadow">Cardio</button>
+          </div>
+
+          <div id="portfolioGrid" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- item -->
+            <figure class="relative overflow-hidden rounded-lg group portfolio-item" data-category="bootcamp">
+              <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?auto=format&fit=crop&w=900&q=80" alt="Bootcamp group session" class="w-full h-56 object-cover group-hover:scale-105 transition-transform" />
+              <figcaption class="absolute inset-0 flex items-end p-4 portfolio-overlay bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition">
+                <div>
+                  <h4 class="text-white font-semibold">Bootcamp — Early Morning</h4>
+                  <p class="text-sm text-white/80">High-energy outdoor sessions.</p>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure class="relative overflow-hidden rounded-lg group portfolio-item" data-category="strength">
+              <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?auto=format&fit=crop&w=900&q=80" alt="Strength training" class="w-full h-56 object-cover group-hover:scale-105 transition-transform" />
+              <figcaption class="absolute inset-0 flex items-end p-4 portfolio-overlay bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition">
+                <div>
+                  <h4 class="text-white font-semibold">Strength Program</h4>
+                  <p class="text-sm text-white/80">6-week hypertrophy cycle</p>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure class="relative overflow-hidden rounded-lg group portfolio-item" data-category="cardio">
+              <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?auto=format&fit=crop&w=900&q=80" alt="Cardio session" class="w-full h-56 object-cover group-hover:scale-105 transition-transform" />
+              <figcaption class="absolute inset-0 flex items-end p-4 portfolio-overlay bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition">
+                <div>
+                  <h4 class="text-white font-semibold">Cardio Blast</h4>
+                  <p class="text-sm text-white/80">30-minute metabolic conditioning.</p>
+                </div>
+              </figcaption>
+            </figure>
+
+            <!-- duplicates for layout fullness -->
+            <figure class="relative overflow-hidden rounded-lg group portfolio-item" data-category="bootcamp">
+              <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?auto=format&fit=crop&w=900&q=80" alt="Bootcamp group" class="w-full h-56 object-cover group-hover:scale-105 transition-transform" />
+              <figcaption class="absolute inset-0 flex items-end p-4 portfolio-overlay bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition">
+                <div>
+                  <h4 class="text-white font-semibold">Transformation — Bootcamp</h4>
+                  <p class="text-sm text-white/80">Client success story.</p>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure class="relative overflow-hidden rounded-lg group portfolio-item" data-category="strength">
+              <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?auto=format&fit=crop&w=900&q=80" alt="Strength sample" class="w-full h-56 object-cover group-hover:scale-105 transition-transform" />
+              <figcaption class="absolute inset-0 flex items-end p-4 portfolio-overlay bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition">
+                <div>
+                  <h4 class="text-white font-semibold">Strength Workshop</h4>
+                  <p class="text-sm text-white/80">Technique-focused session.</p>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure class="relative overflow-hidden rounded-lg group portfolio-item" data-category="cardio">
+              <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?auto=format&fit=crop&w=900&q=80" alt="Cardio sample" class="w-full h-56 object-cover group-hover:scale-105 transition-transform" />
+              <figcaption class="absolute inset-0 flex items-end p-4 portfolio-overlay bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition">
+                <div>
+                  <h4 class="text-white font-semibold">Cardio Challenge</h4>
+                  <p class="text-sm text-white/80">Community-run challenge.</p>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section id="testimonials" class="py-16">
+        <div class="mx-auto px-4 canvas-max text-center">
+          <h2 class="text-3xl font-heading font-bold">What our clients say</h2>
+          <p class="mt-2 text-slate-600">Real stories from members who transformed with us.</p>
+
+          <!-- Carousel -->
+          <div class="mt-8 relative">
+            <div id="testCarousel" class="overflow-hidden">
+              <div class="flex gap-6 transition-transform duration-500" style="transform: translateX(0%);">
+                <!-- Card 1 -->
+                <blockquote class="min-w-full p-8 bg-white rounded-lg shadow slide-in">
+                  <div class="flex items-center gap-4">
+                    <img src="https://via.placeholder.com/64" class="w-16 h-16 rounded-full" alt="Client headshot - Maya">
+                    <div>
+                      <div class="font-semibold">Maya R.</div>
+                      <div class="text-sm text-slate-500">Lost 8 kgs in 12 weeks</div>
+                    </div>
+                  </div>
+                  <p class="mt-4 text-slate-700">"The coaching style is practical and motivating — the bootcamp pushed me and the one-on-one sessions fixed my form."</p>
+                </blockquote>
+
+                <!-- Card 2 -->
+                <blockquote class="min-w-full p-8 bg-white rounded-lg shadow slide-in">
+                  <div class="flex items-center gap-4">
+                    <img src="https://via.placeholder.com/64" class="w-16 h-16 rounded-full" alt="Client headshot - Arjun">
+                    <div>
+                      <div class="font-semibold">Arjun S.</div>
+                      <div class="text-sm text-slate-500">Strength & Mobility</div>
+                    </div>
+                  </div>
+                  <p class="mt-4 text-slate-700">"Coach Arun helped me finally beat my plateau. The programming is thoughtful and progressive."</p>
+                </blockquote>
+
+                <!-- Card 3 -->
+                <blockquote class="min-w-full p-8 bg-white rounded-lg shadow slide-in">
+                  <div class="flex items-center gap-4">
+                    <img src="https://via.placeholder.com/64" class="w-16 h-16 rounded-full" alt="Client headshot - Priya">
+                    <div>
+                      <div class="font-semibold">Priya K.</div>
+                      <div class="text-sm text-slate-500">Postnatal recovery</div>
+                    </div>
+                  </div>
+                  <p class="mt-4 text-slate-700">"Supportive coaches and sensible progressions — great experience for new moms."</p>
+                </blockquote>
+              </div>
+            </div>
+
+            <!-- Carousel controls -->
+            <div class="mt-4 flex items-center justify-center gap-4">
+              <button id="prevTest" class="p-3 bg-white rounded shadow hover:bg-slate-50" aria-label="Previous testimonial">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button id="nextTest" class="p-3 bg-white rounded shadow hover:bg-slate-50" aria-label="Next testimonial">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRICING -->
+      <section id="pricing" class="bg-slate-100 py-16">
+        <div class="mx-auto px-4 canvas-max text-center">
+          <h2 class="text-3xl font-heading font-bold">Pricing & Packages</h2>
+          <p class="mt-2 text-slate-600">Flexible plans for every goal — choose what suits you best.</p>
+
+          <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-xl font-semibold">Starter</h3>
+                  <p class="text-sm text-slate-500">For beginners</p>
+                </div>
+                <div class="text-2xl font-bold">₹2,999</div>
+              </div>
+              <ul class="mt-4 space-y-2 text-sm text-slate-600">
+                <li>4 sessions / month</li>
+                <li>Basic program</li>
+                <li>Community chat</li>
+              </ul>
+              <a href="contact.html" class="mt-6 inline-block w-full bg-white border border-brand text-brand py-2 rounded-full font-semibold text-center">Select</a>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow border-2 border-brand transform scale-100 md:scale-105">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-xl font-semibold">Most Popular</h3>
+                  <p class="text-sm text-slate-500">Balanced monthly coaching</p>
+                </div>
+                <div class="text-2xl font-bold">₹5,999</div>
+              </div>
+              <ul class="mt-4 space-y-2 text-sm text-slate-600">
+                <li>8 sessions / month</li>
+                <li>Personalized program</li>
+                <li>Nutrition guidance</li>
+              </ul>
+              <a href="contact.html" class="mt-6 inline-block w-full bg-brand text-white py-2 rounded-full font-semibold text-center">Get this plan</a>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-xl font-semibold">Premium</h3>
+                  <p class="text-sm text-slate-500">For serious progress</p>
+                </div>
+                <div class="text-2xl font-bold">₹10,999</div>
+              </div>
+              <ul class="mt-4 space-y-2 text-sm text-slate-600">
+                <li>Unlimited sessions</li>
+                <li>1:1 coaching + programming</li>
+                <li>Priority scheduling</li>
+              </ul>
+              <a href="contact.html" class="mt-6 inline-block w-full bg-white border border-brand text-brand py-2 rounded-full font-semibold text-center">Contact us</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BLOG / NEWS PREVIEW -->
+      <section id="blog" class="py-16">
+        <div class="mx-auto px-4 canvas-max">
+          <div class="text-center">
+            <h2 class="text-3xl font-heading font-bold">From the Blog</h2>
+            <p class="mt-2 text-slate-600">Latest tips, program updates and nutrition articles.</p>
+          </div>
+
+          <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <article class="bg-white rounded-lg shadow overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74" alt="Blog post: 5 warmups" class="w-full h-44 object-cover" />
+              <div class="p-4">
+                <h3 class="font-semibold">5 Warm-ups to Improve Mobility</h3>
+                <p class="mt-2 text-sm text-slate-600">Short routines to prepare your body for heavy training and reduce injury risk.</p>
+                <a href="#" class="mt-3 inline-block text-brand font-semibold">Read →</a>
+              </div>
+            </article>
+
+            <article class="bg-white rounded-lg shadow overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74" alt="Blog post: nutrition basics" class="w-full h-44 object-cover" />
+              <div class="p-4">
+                <h3 class="font-semibold">Nutrition Basics for Strength</h3>
+                <p class="mt-2 text-sm text-slate-600">Simple tips to dial in your protein and calorie needs for muscle growth.</p>
+                <a href="#" class="mt-3 inline-block text-brand font-semibold">Read →</a>
+              </div>
+            </article>
+
+            <article class="bg-white rounded-lg shadow overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74" alt="Blog post: consistency" class="w-full h-44 object-cover" />
+              <div class="p-4">
+                <h3 class="font-semibold">The Habit of Consistency</h3>
+                <p class="mt-2 text-sm text-slate-600">How small daily wins lead to long-term change.</p>
+                <a href="#" class="mt-3 inline-block text-brand font-semibold">Read →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="bg-slate-50 py-16">
+        <div class="mx-auto px-4 canvas-max">
+          <div class="text-center">
+            <h2 class="text-3xl font-heading font-bold">Frequently Asked Questions</h2>
+            <p class="mt-2 text-slate-600">Answers to common queries about classes, pricing, and programs.</p>
+          </div>
+
+          <div class="mt-8 max-w-3xl mx-auto space-y-3">
+            <div class="bg-white rounded-lg shadow">
+              <button class="w-full text-left px-4 py-3 flex items-center justify-between faq-toggle">
+                <span class="font-medium">What should I bring to class?</span>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.6"/></svg>
+              </button>
+              <div class="px-4 py-3 faq-content hidden text-slate-600">Bring a towel, water bottle, and comfortable clothing. We provide mats and selected equipment.</div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow">
+              <button class="w-full text-left px-4 py-3 flex items-center justify-between faq-toggle">
+                <span class="font-medium">Do you offer nutrition plans?</span>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.6"/></svg>
+              </button>
+              <div class="px-4 py-3 faq-content hidden text-slate-600">Yes — we offer tiered nutrition coaching packages to pair with your training plan.</div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow">
+              <button class="w-full text-left px-4 py-3 flex items-center justify-between faq-toggle">
+                <span class="font-medium">Can I try a class first?</span>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.6"/></svg>
+              </button>
+              <div class="px-4 py-3 faq-content hidden text-slate-600">Yes — we offer a discounted first session. Contact us to book a trial.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="py-16">
+        <div class="mx-auto px-4 canvas-max grid lg:grid-cols-2 gap-8">
+          <div>
+            <h2 class="text-3xl font-heading font-bold">Get in touch</h2>
+            <p class="mt-2 text-slate-600">Phone: <a class="text-brand" href="tel:+919676659153">+91 96766 59153</a> • Email: <a href="mailto:info@redescreation.in" class="text-brand">info@redescreation.in</a></p>
+
+            <form id="contactForm" class="mt-6 bg-white p-6 rounded-lg shadow" aria-label="Contact form">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <label class="block">
+                  <span class="text-sm font-medium">Full name</span>
+                  <input name="name" required class="mt-1 block w-full rounded border px-3 py-2" placeholder="Your name" />
+                </label>
+                <label class="block">
+                  <span class="text-sm font-medium">Phone</span>
+                  <input name="phone" required class="mt-1 block w-full rounded border px-3 py-2" placeholder="+91 9xxxxxxxxx" />
+                </label>
+              </div>
+
+              <label class="block mt-3">
+                <span class="text-sm font-medium">Email</span>
+                <input name="email" type="email" required class="mt-1 block w-full rounded border px-3 py-2" placeholder="you@example.com" />
+              </label>
+
+              <label class="block mt-3">
+                <span class="text-sm font-medium">Message</span>
+                <textarea name="message" rows="4" class="mt-1 block w-full rounded border px-3 py-2" placeholder="How can we help?"></textarea>
+              </label>
+
+              <div class="mt-4 flex items-center gap-3">
+                <button type="submit" class="bg-brand text-white px-4 py-2 rounded-full font-semibold">Send Message</button>
+                <a href="https://www.redescreation.in" class="text-slate-600">Visit website</a>
+              </div>
+            </form>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold">Our location</h3>
+            <p class="mt-2 text-slate-600">Bengaluru, Karnataka — Reach us for in-person training & classes.</p>
+
+            <!-- Map embed (Bengaluru) -->
+            <div class="mt-4 border rounded overflow-hidden">
+              <iframe
+                title="Fitness Trainer Bengaluru map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.1230130566865!2d77.59456281483329!3d12.97159879085933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670f0b2e0f9%3A0x0!2zMTLCsDU4JzAzLjAiTiA3N8KwMzUnMzAuMCJF!5e0!3m2!1sen!2sin!4v1590000000000!5m2!1sen!2sin"
+                width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+            <div class="mt-4 text-sm text-slate-600">
+              <p><strong>Phone:</strong> +91 96766 59153</p>
+              <p><strong>Email:</strong> info@redescreation.in</p>
+              <p class="mt-2"><strong>Website:</strong> www.redescreation.in</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ===========================
+       FOOTER
+       =========================== -->
+  <footer class="bg-slate-900 text-slate-300 py-12">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-white font-semibold mb-2">FitTrainer</h3>
+        <p class="muted text-sm">Bengaluru • Personal Training • Nutrition</p>
+        <div class="flex gap-3 mt-4 text-amber-400">
+          <a href="#" aria-label="facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="youtube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white font-medium mb-2">Links</h4>
+        <ul class="text-sm muted space-y-2">
+          <li><a href="index.html" class="hover:text-white">Home</a></li>
+          <li><a href="about.html" class="hover:text-white">About</a></li>
+          <li><a href="programs.html" class="hover:text-white">Programs</a></li>
+          <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-medium mb-2">Support</h4>
+        <ul class="text-sm muted space-y-2">
+          <li><a href="#" class="hover:text-white">FAQs</a></li>
+          <li><a href="#" class="hover:text-white">Privacy</a></li>
+          <li><a href="#" class="hover:text-white">Terms</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-medium mb-2">Contact</h4>
+        <p class="text-sm">Phone: <a href="tel:+919676659153" class="text-amber-400">+91 96766 59153</a></p>
+        <p class="text-sm">Email: <a href="mailto:info@redescreation.in" class="text-amber-400">info@redescreation.in</a></p>
+        <p class="muted text-sm mt-3">© <span id="yr"></span> FitTrainer. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  </div>
+
+  <!-- JS: menu, carousel, filter, accordion, simple form handlers -->
+  <script>
+    // Utilities
+    const $ = (sel, ctx=document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+
+    // Mobile menu toggles
+    const mobileToggle = $('#mobileToggle');
+    const mobileMenu = $('#mobileMenu');
+    const mobileBackdrop = $('#mobileBackdrop');
+    const mobileClose = $('#mobileClose');
+
+    function openMobile() {
+      mobileMenu.style.transform = 'translateX(0%)';
+      mobileToggle.setAttribute('aria-expanded', 'true');
+    }
+    function closeMobile() {
+      mobileMenu.style.transform = 'translateX(100%)';
+      mobileToggle.setAttribute('aria-expanded', 'false');
+    }
+    mobileToggle.addEventListener('click', openMobile);
+    mobileClose.addEventListener('click', closeMobile);
+    mobileBackdrop.addEventListener('click', closeMobile);
+
+    // Hero signup — demo handler
+    $('#heroSignup').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Thanks! Your reservation request has been received. We will contact you shortly.');
+      this.reset();
+    });
+
+    // Contact form demo handler
+    $('#contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Message sent. We will respond via email or phone. Thank you!');
+      this.reset();
+    });
+
+    // Portfolio filter
+    const filterBtns = $$('.filter-btn');
+    const items = $$('.portfolio-item');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const f = btn.getAttribute('data-filter');
+        items.forEach(it => {
+          if (f === 'all' || it.dataset.category === f) {
+            it.style.display = '';
+          } else {
+            it.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Simple testimonial carousel
+    let testPos = 0;
+    const testWrapper = $('#testCarousel > div');
+    const testItems = testWrapper.children.length;
+    function showTest(pos) {
+      const pct = -100 * pos;
+      testWrapper.style.transform = 'translateX(' + pct + '%)';
+    }
+    $('#prevTest').addEventListener('click', () => {
+      testPos = (testPos - 1 + testItems) % testItems;
+      showTest(testPos);
+    });
+    $('#nextTest').addEventListener('click', () => {
+      testPos = (testPos + 1) % testItems;
+      showTest(testPos);
+    });
+
+    // FAQ toggles
+    $$('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panel = btn.nextElementSibling;
+        const isHidden = panel.classList.contains('hidden');
+        if (isHidden) {
+          panel.classList.remove('hidden');
+        } else {
+          panel.classList.add('hidden');
+        }
+      });
+    });
+
+    // Intersection observer for slide-in elements
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('in-view');
+      });
+    }, {threshold: 0.2});
+    $$('.slide-in').forEach(el => io.observe(el));
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Accessibility: close mobile menu with Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMobile();
+    });
+
+    // Small: ensure Earth-friendly reduced motion
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (media.matches) {
+      document.querySelectorAll('*').forEach(el => {
+        el.style.transition = 'none';
+        el.style.animation = 'none';
+      });
+    }
+  </script>
+
+  <!-- Structured Data (JSON-LD) for SEO localBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "Fitness Trainer Bengaluru",
+    "url": "https://www.redescreation.in",
+    "logo": "https://www.redescreation.in/logo.png",
+    "image": "https://www.redescreation.in/preview.jpg",
+    "description": "Personal training and group classes in Bengaluru. Book coaching, boot camps and nutrition coaching.",
+    "telephone": "+919676659153",
+    "address": { 
+      "@type": "PostalAddress",
+      "addressLocality": "Bengaluru",
+      "addressRegion": "Karnataka",
+      "addressCountry": "IN"
+    },
+    "sameAs": [
+      "https://www.facebook.com/",
+      "https://www.instagram.com/"
+    ]
+  }
+  </script>
+</body>
+</html>

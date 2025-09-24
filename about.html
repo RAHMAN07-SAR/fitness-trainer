@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - NextGen Fitness</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a2d9d6a62c.js" crossorigin="anonymous"></script>
+  <!-- Tailwind config overrides (colors & fonts) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#f2b705', /* GymPress-like yellow */
+              dark: '#f0a800',
+              deep: '#2b2b2b'
+            }
+          },
+          fontFamily: {
+            heading: ['Poppins', 'system-ui', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Smooth animations */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 1s, transform 1s; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .zoom-in { transform: scale(0.8); opacity: 0; transition: transform 1s, opacity 1s; }
+    .zoom-in.visible { transform: scale(1); opacity: 1; }
+    .slide-left { transform: translateX(-50px); opacity: 0; transition: transform 1s, opacity 1s; }
+    .slide-left.visible { transform: translateX(0); opacity: 1; }
+    .slide-right { transform: translateX(50px); opacity: 0; transition: transform 1s, opacity 1s; }
+    .slide-right.visible { transform: translateX(0); opacity: 1; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- TOP BAR -->
+    <div class="w-full bg-slate-800 text-white">
+      <div class="mx-auto px-4 py-2 canvas-max flex items-center justify-between text-sm">
+        <div class="flex items-center gap-4">
+          <span class="flex items-center gap-2">
+            <!-- small clock icon -->
+            <svg class="w-4 h-4 text-brand" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 2v6l4 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="text-slate-200">Opening Times: <strong class="text-white">8:00 AM - 12:00 PM</strong></span>
+          </span>
+        </div>
+
+        <div class="flex items-center gap-6">
+          <a href="tel:+919676659153" class="flex items-center gap-2 hover:text-brand" aria-label="Call us at +91 96766 59153">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M22 16.92V20a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.63A2 2 0 0 1 4 2h3.09a2 2 0 0 1 2 1.72c.12 1.21.38 2.4.76 3.54a2 2 0 0 1-.45 2.11L8.91 11.09a16 16 0 0 0 6 6l1.72-1.5a2 2 0 0 1 2.11-.45c1.14.38 2.33.64 3.54.76A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="text-slate-200">+91 96766 59153</span>
+          </a>
+          <a href="mailto:info@redescreation.in" class="hover:text-brand text-slate-200">info@redescreation.in</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HEADER / NAV -->
+    <header class="bg-white sticky top-0 z-40 shadow-sm">
+      <div class="mx-auto px-4 canvas-max flex items-center justify-between py-4">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <a href="#" class="flex items-center gap-3" aria-label="Fitness Trainer Bengaluru Home">
+            <div class="bg-brand text-white rounded-md p-2">
+              <!-- dumbbell icon -->
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M2 12h2m16 0h2M7 12V7m10 5v-5M7 7h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h1 class="text-xl font-heading tracking-tight text-slate-900">Fitness Trainer</h1>
+              <div class="text-xs text-slate-500">Bengaluru • Personal Training</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center gap-6" aria-label="Primary Navigation">
+          <a class="text-slate-700 hover:text-brand font-medium" href="index.html">Home</a>
+          <a class="text-slate-700 hover:text-brand font-medium" href="about.html">About</a>
+          <a class="text-slate-700 hover:text-brand font-medium" href="programs.html">Programs</a>
+          <a class="text-slate-700 hover:text-brand font-medium" href="Testimonials.html">Testimonials</a>
+          <!-- <a class="text-slate-700 hover:text-brand font-medium" href="blog.html">Blog</a> -->
+          <a class="text-slate-700 hover:text-brand font-medium" href="contact.html">Contact</a>
+        </nav>
+
+        <!-- CTAs & mobile toggle -->
+        <div class="flex items-center gap-3">
+          <a href="contact.html" class="hidden md:inline-block bg-brand px-4 py-2 rounded-full text-white font-semibold cta-shadow hover:bg-brand-dark transition">Book a Session</a>
+
+          <!-- Mobile hamburger -->
+          <button id="mobileToggle" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden p-2 rounded hover:bg-slate-100 focus:outline-none" title="Open menu">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile slide-out -->
+      <div id="mobileMenu" class="fixed inset-0 z-50 transform translate-x-full md:hidden transition-transform duration-300">
+        <div class="absolute inset-0 bg-black/50" id="mobileBackdrop" aria-hidden="true"></div>
+        <aside class="absolute right-0 top-0 h-full w-80 bg-white p-6 overflow-y-auto" role="dialog" aria-label="Mobile menu">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+              <div class="bg-brand rounded-md p-2 text-white">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M2 12h2m16 0h2M7 12V7m10 5v-5M7 7h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <div class="font-heading font-bold">Fitness Trainer</div>
+                <div class="text-xs text-slate-500">Bengaluru</div>
+              </div>
+            </div>
+            <button id="mobileClose" class="p-2 rounded hover:bg-slate-100" aria-label="Close menu">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+
+          <nav class="flex flex-col gap-3" aria-label="Mobile Primary Navigation">
+            <a class="py-2 px-3 rounded hover:bg-slate-50" href="index.html">Home</a>
+            <a class="py-2 px-3 rounded hover:bg-slate-50" href="about.html">About</a>
+            <a class="py-2 px-3 rounded hover:bg-slate-50" href="programs.html">Programs</a>
+            <a class="py-2 px-3 rounded hover:bg-slate-50" href="Testimonials.html">Testimonials</a>
+            <!-- <a class="py-2 px-3 rounded hover:bg-slate-50" href="blog.html">Blog</a> -->
+            <a class="py-2 px-3 rounded hover:bg-slate-50" href="contact.html">Contact</a>
+          </nav>
+
+          <div class="mt-6 border-t pt-4">
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-slate-500" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M22 16.92V20a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.63A2 2 0 0 1 4 2h3.09a2 2 0 0 1 2 1.72c.12 1.21.38 2.4.76 3.54a2 2 0 0 1-.45 2.11L8.91 11.09a16 16 0 0 0 6 6l1.72-1.5a2 2 0 0 1 2.11-.45c1.14.38 2.33.64 3.54.76A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a href="tel:+919676659153" class="text-sm">+91 96766 59153</a>
+            </div>
+            <div class="mt-2 text-sm">
+              <a href="mailto:info@redescreation.in">info@redescreation.in</a>
+            </div>
+            <div class="mt-3 flex gap-3">
+              <a href="#" aria-label="facebook" class="p-2 rounded hover:bg-slate-100" title="Facebook">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="#" aria-label="instagram" class="p-2 rounded hover:bg-slate-100" title="Instagram">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden><rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="1"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="currentColor" stroke-width="1"/></svg>
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="relative bg-cover bg-center h-[70vh]" style="background-image: url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1');">
+    <div class="absolute inset-0 bg-black/60 flex flex-col justify-center items-center text-center px-6">
+      <h2 class="text-4xl md:text-6xl font-bold text-yellow-400 mb-4 fade-in">About Us</h2>
+      <p class="text-lg md:text-2xl text-gray-200 fade-in">Empowering lives through strength, wellness & community</p>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT STORY ================= -->
+  <section class="max-w-7xl mx-auto py-16 px-6 grid md:grid-cols-2 gap-12 items-center">
+    <div class="slide-left">
+      <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74" alt="About Image" class="rounded-2xl shadow-lg">
+    </div>
+    <div class="slide-right">
+      <h3 class="text-3xl font-bold mb-4 text-gray-900">Our Story</h3>
+      <p class="mb-4 text-gray-600 leading-relaxed">Founded in 2015, NextGen Fitness was built on a mission to transform how people approach health and fitness. We believe in balance — where physical fitness, mental well-being, and community come together.</p>
+      <p class="mb-6 text-gray-600 leading-relaxed">From small beginnings, we have grown into a thriving fitness hub, trusted by thousands of members across Bengaluru and beyond.</p>
+      <a href="services.html" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-6 py-3 rounded-lg font-semibold shadow">Explore Services</a>
+    </div>
+  </section>
+
+  <!-- ================= MISSION VISION VALUES ================= -->
+  <section class="bg-gray-100 py-16 px-6">
+    <div class="max-w-7xl mx-auto text-center mb-12">
+      <h3 class="text-3xl font-bold text-gray-900">What We Stand For</h3>
+      <p class="text-gray-600 mt-2">Guided by our mission, vision, and core values.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition zoom-in">
+        <i class="fas fa-bullseye text-4xl text-yellow-400 mb-4"></i>
+        <h4 class="text-xl font-semibold mb-2">Mission</h4>
+        <p class="text-gray-600">To inspire healthier lifestyles and empower individuals to achieve lasting fitness transformations.</p>
+      </div>
+      <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition zoom-in">
+        <i class="fas fa-eye text-4xl text-yellow-400 mb-4"></i>
+        <h4 class="text-xl font-semibold mb-2">Vision</h4>
+        <p class="text-gray-600">To become the most trusted and innovative fitness brand in India and beyond.</p>
+      </div>
+      <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition zoom-in">
+        <i class="fas fa-heart text-4xl text-yellow-400 mb-4"></i>
+        <h4 class="text-xl font-semibold mb-2">Values</h4>
+        <p class="text-gray-600">Integrity, inclusivity, and innovation guide us in creating meaningful health experiences.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TEAM ================= -->
+  <section class="max-w-7xl mx-auto py-16 px-6">
+    <div class="text-center mb-12">
+      <h3 class="text-3xl font-bold text-gray-900">Meet Our Team</h3>
+      <p class="text-gray-600 mt-2">The passionate trainers and coaches behind our success.</p>
+    </div>
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl p-6 text-center transition fade-in">
+        <img src="https://randomuser.me/api/portraits/men/45.jpg" class="w-32 h-32 rounded-full mx-auto mb-4" alt="Trainer 1">
+        <h4 class="font-semibold text-lg">Rahul Sharma</h4>
+        <p class="text-gray-500 text-sm">Head Coach</p>
+        <div class="flex justify-center gap-4 mt-3 text-yellow-400">
+          <i class="fab fa-facebook"></i><i class="fab fa-instagram"></i>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl p-6 text-center transition fade-in">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" class="w-32 h-32 rounded-full mx-auto mb-4" alt="Trainer 2">
+        <h4 class="font-semibold text-lg">Ananya Rao</h4>
+        <p class="text-gray-500 text-sm">Nutrition Expert</p>
+        <div class="flex justify-center gap-4 mt-3 text-yellow-400">
+          <i class="fab fa-facebook"></i><i class="fab fa-instagram"></i>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl p-6 text-center transition fade-in">
+        <img src="https://randomuser.me/api/portraits/men/75.jpg" class="w-32 h-32 rounded-full mx-auto mb-4" alt="Trainer 3">
+        <h4 class="font-semibold text-lg">Arjun Mehta</h4>
+        <p class="text-gray-500 text-sm">Strength Coach</p>
+        <div class="flex justify-center gap-4 mt-3 text-yellow-400">
+          <i class="fab fa-facebook"></i><i class="fab fa-instagram"></i>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl p-6 text-center transition fade-in">
+        <img src="https://randomuser.me/api/portraits/women/85.jpg" class="w-32 h-32 rounded-full mx-auto mb-4" alt="Trainer 4">
+        <h4 class="font-semibold text-lg">Priya Nair</h4>
+        <p class="text-gray-500 text-sm">Yoga Instructor</p>
+        <div class="flex justify-center gap-4 mt-3 text-yellow-400">
+          <i class="fab fa-facebook"></i><i class="fab fa-instagram"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COUNTERS ================= -->
+  <section class="bg-gray-900 text-white py-16 px-6">
+    <div class="grid md:grid-cols-4 gap-8 text-center max-w-7xl mx-auto">
+      <div>
+        <h4 class="text-4xl font-bold text-yellow-400 counter" data-target="10">0</h4>
+        <p class="text-gray-400 mt-2">Years Experience</p>
+      </div>
+      <div>
+        <h4 class="text-4xl font-bold text-yellow-400 counter" data-target="5000">0</h4>
+        <p class="text-gray-400 mt-2">Happy Clients</p>
+      </div>
+      <div>
+        <h4 class="text-4xl font-bold text-yellow-400 counter" data-target="25">0</h4>
+        <p class="text-gray-400 mt-2">Trainers</p>
+      </div>
+      <div>
+        <h4 class="text-4xl font-bold text-yellow-400 counter" data-target="100">0</h4>
+        <p class="text-gray-400 mt-2">Programs</p>
+      </div>
+    </div>
+  </section>
+<!-- ===========================
+       FOOTER
+       =========================== -->
+  <footer class="bg-slate-900 text-slate-300 py-12">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-white font-semibold mb-2">FitTrainer</h3>
+        <p class="muted text-sm">Bengaluru • Personal Training • Nutrition</p>
+        <div class="flex gap-3 mt-4 text-amber-400">
+          <a href="#" aria-label="facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="youtube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white font-medium mb-2">Links</h4>
+        <ul class="text-sm muted space-y-2">
+          <li><a href="index.html" class="hover:text-white">Home</a></li>
+          <li><a href="about.html" class="hover:text-white">About</a></li>
+          <li><a href="programs.html" class="hover:text-white">Programs</a></li>
+          <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-medium mb-2">Support</h4>
+        <ul class="text-sm muted space-y-2">
+          <li><a href="#" class="hover:text-white">FAQs</a></li>
+          <li><a href="#" class="hover:text-white">Privacy</a></li>
+          <li><a href="#" class="hover:text-white">Terms</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-medium mb-2">Contact</h4>
+        <p class="text-sm">Phone: <a href="tel:+919676659153" class="text-amber-400">+91 96766 59153</a></p>
+        <p class="text-sm">Email: <a href="mailto:info@redescreation.in" class="text-amber-400">info@redescreation.in</a></p>
+        <p class="muted text-sm mt-3">© <span id="yr"></span> FitTrainer. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= JS ================= -->
+  <script>
+   // Utilities
+    const $ = (sel, ctx=document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+
+    // Mobile menu toggles
+    const mobileToggle = $('#mobileToggle');
+    const mobileMenu = $('#mobileMenu');
+    const mobileBackdrop = $('#mobileBackdrop');
+    const mobileClose = $('#mobileClose');
+
+    function openMobile() {
+      mobileMenu.style.transform = 'translateX(0%)';
+      mobileToggle.setAttribute('aria-expanded', 'true');
+    }
+    function closeMobile() {
+      mobileMenu.style.transform = 'translateX(100%)';
+      mobileToggle.setAttribute('aria-expanded', 'false');
+    }
+    mobileToggle.addEventListener('click', openMobile);
+    mobileClose.addEventListener('click', closeMobile);
+    mobileBackdrop.addEventListener('click', closeMobile);
+
+
+    // Scroll animation
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.fade-in, .zoom-in, .slide-left, .slide-right').forEach(el => observer.observe(el));
+
+    // Counter Animation
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(counter => {
+      const update = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const inc = Math.ceil(target / 100);
+        if(count < target){
+          counter.innerText = count + inc;
+          setTimeout(update, 40);
+        } else { counter.innerText = target; }
+      };
+      update();
+    });
+  </script>
+</body>
+</html>
+ 
